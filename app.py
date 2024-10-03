@@ -1,12 +1,15 @@
-from flask import Flask #Importa o flask
+from flask import (Flask , request) #Importa o flask
 
 
 app= Flask(__name__) # cria uma instância
 
 @app.route("/", methods=('GET',)) #Assina una rota
+def index():
+    nome = request.args.get('nome')
 
-def index(): # função responsável pela página
-    return "<h1>Página inicial</h1> <p>Eu sou fulano</p> <hr>" # HTML retornado
+    return f"""<h1>Pagina inicial</h1>
+     <p>Olá {nome}, que nome bonito!"""
+
 
 @app.route("/galeria", methods=('GET',))
 def galeria():
