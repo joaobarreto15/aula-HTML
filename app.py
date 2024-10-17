@@ -23,11 +23,9 @@ def contato():
 def sobre():
     return "<h1>Sobre</h1>"
 
-@app.route("/area")
-def area():
-    altura= float (request.args.get('a'))
-    largura= float (request.args.get('l'))
-    return  f"""<h1> A área informada > L={largura}* A={altura} =) Area= {largura*altura}</h1>"""
+@app.route("/area/<float:largura>/<float:comprimento>")
+def area(largura: float, comprimento: float):
+    return  f"""<h1> A área informada > L={largura}* A={comprimento} =) Area= {largura*comprimento}</h1>"""
 @app.route("/par_ou_impar", methods=('GET',))
 def par_ou_impar():
   numero = float(request.args.get('n'))
