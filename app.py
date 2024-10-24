@@ -44,14 +44,14 @@ def potencia(numero: float, elevado: float):
     return  f"""<h1> A potencia informada > N={numero}* E={elevado} =) Potencia= {numero**elevado}</h1>"""
 
 @app.route("/tabuada")
-@app.route("/tabuada/<num>", methods=['GET'])
-def tabuada(num = None):
-
-    if'num' in request.args:
-       num = request.args.get('num')
-       num= int(request.args.get('num'))
-
-    return render_template('tabuada.html', num=num)
+@app.route("/tabuada/<numero>", methods=("GET", ))
+def tabuada(numero = None):
+   
+  if 'numero' in request.args: 
+    numero = request.args.get('numero')
+    numero = int(request.args.get('numero'))
+         
+  return render_template('tabuada.html', numero=numero)
 
 
 
